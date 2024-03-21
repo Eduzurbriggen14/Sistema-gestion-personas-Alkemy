@@ -9,44 +9,32 @@ Permite agregar nuevos productos y proveedores, listar todos los productos regis
 `Django`
 
 ## Pasos para configurar el proyecto
-Clonar el repositorio:
+### Clonar el repositorio:
 
 `git clone https://github.com/tu_usuario/stockcontrol.git`
-Instalar las dependencias del proyecto:
 
-Una vez que clonamos el repositorio, abrimos el proyecto en VSCode y nos posicionamos en el proyecto StockControl
+### Instalar las dependencias del proyecto:
+
+`pip install -r requirements.txt`
+
+### Una vez que clonamos el repositorio, abrimos el proyecto en VSCode y nos posicionamos en el proyecto/carpeta StockControl
 
 `cd StockControl`
-pip install -r requirements.txt
-Realizar migraciones para crear la base de datos:
 
-Relizar Migraciones
+### Realizar migraciones para crear la base de datos:
+
 `python manage.py makemigrations`
+
 `python manage.py migrate`
 
-Crear un superusuario para acceder al panel de administración:
+### Crear un superusuario para acceder al panel de administración:
 
 `python manage.py createsuperuser`
+
 Ingresamos las credenciales necesarias para crear el super usuario
 
-jecutar el servidor de desarrollo:
-
+### Ejecutamos el proyecto mediante el siguiente codigo
 
 `python manage.py runserver`
-Acceder al panel de administración en `http://localhost:8000/admin/` e iniciar sesión con las credenciales del superusuario creado.
 
-Pasos para crear una nueva app
-Ejecutar el siguiente comando para crear una nueva app llamada "compra":
-
-bash
-Copy code
-python manage.py startapp compra
-Definir los modelos Producto y Proveedor con los campos requeridos dentro de la app compra/models.py.
-
-Realizar las migraciones correspondientes:
-
-bash
-Copy code
-python manage.py makemigrations compra
-python manage.py migrate
-Registrar los modelos en el archivo compra/admin.py para que sean visibles en el panel de administración.
+Acceder al panel de administración, en la consola hacemos *"ctrl+click"* en `http://localhost:8000/admin/` e iniciamos sesión con las credenciales del superusuario creado.
