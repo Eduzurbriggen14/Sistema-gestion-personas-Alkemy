@@ -1,0 +1,92 @@
+{% extends "./plantilla.html "%}
+
+{% block title %}Productos{% endblock %}
+
+{% block body %}
+<div class="table-responsive py-3">
+    <h1>Productos</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col" class="col-1">ID</th>
+                <th scope="col" class="col-3">nombre</th>
+                <th scope="col" class="col-1">precio</th>
+                <th scope="col" class="col-1">stock</th>
+                <th scope="col" class="col-3">proveedor</th>
+                <th colspan="2" class="text-end">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <td>{{producto.id}}</td>
+                <td>{{producto.nombre}}</td>
+                <td>${{producto.precio}}</td>
+                <td>{{producto.stock_actual}}</td>
+                <td>{{producto.proveedor}}</td>
+                <th class="text-end">
+                    <a href="/modificarProducto/{{producto.pk}}" class="btn btn-primary">Editar</a>
+                    <a href="/eliminarProducto/{{producto.pk}}" class="btn btn-danger">Eliminar</a>
+                    </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if error_message %}
+<div class="alert alert-danger" role="alert">
+    {{ error_message }}
+</div>
+{% endif %}
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    Agregue un nuevo Producto
+                </div>
+                <div class="card-body">
+                    <form action="/registrarProducto/" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3 row">
+                            <label for="nombre" class="col-sm-4 col-form-label">Nombre Producto</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="nombre" name="nombre"
+                                    placeholder="Ingrese el nombre del producto">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="precio" class="col-sm-4 col-form-label">Precio</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="precio" name="precio"
+                                    placeholder="Precio">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="stock" class="col-sm-4 col-form-label">Stock</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="stock" name="stock" placeholder="Stock">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="stock" class="col-sm-4 col-form-label">Proveedor</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="proveedor" name="proveedor" placeholder="proveedor">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-sm-4">
+                                <button type="submit" class="btn btn-primary">Agregar Producto</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

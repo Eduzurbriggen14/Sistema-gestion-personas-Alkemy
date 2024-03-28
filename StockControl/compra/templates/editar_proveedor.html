@@ -1,0 +1,47 @@
+{% extends "./plantilla.html" %}
+{% block title %}Editar-Proveedores{% endblock %}
+{% block body %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    Modificar los datos del Proveedor
+                </div>
+                <div class="card-body">
+                    <form action="/modificarProveedor/{{proveedor.pk}}" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3 row">
+                            <label for="nombre" class="col-sm-4 col-form-label">Nombre Proveedor</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" value="{{proveedor.nombre}}" id="nombre" name="nombre" placeholder="Ingrese el nombre del proveedor">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" value="{{proveedor.apellido}}" id="apellido" name="apellido" placeholder="Ingrese el apellido del proveedor">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="dni" class="col-sm-4 col-form-label">DNI</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" value="{{proveedor.dni}}" id="dni" name="dni" placeholder="Ingrese el DNI del proveedor">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-sm-4">
+                                <button type="submit" class="btn btn-primary">Editar Proveedor</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

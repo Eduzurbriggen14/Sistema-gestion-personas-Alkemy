@@ -1,0 +1,53 @@
+{% extends "./plantilla.html "%}
+
+{% block title %}Editar-Productos{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    Agregue un nuevo Producto
+                </div>
+                <div class="card-body">
+                    <form action="/registrarProducto/{{producto.pk}}" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3 row">
+                            <label for="nombre" class="col-sm-4 col-form-label">Nombre Producto</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" value="{{producto.nombre}}" id="nombre" name="nombre" placeholder="Ingrese el nombre del producto">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="precio" class="col-sm-4 col-form-label">Precio</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" value="{{producto.precio}}" id="precio" name="precio" placeholder="Precio">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="stock" class="col-sm-4 col-form-label">Stock</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" value="{{producto.stock_actual}}" id="stock" name="stock" placeholder="Stock">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="proveedor" class="col-sm-4 col-form-label">Proveedor</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" value="{{producto.proveedor}}" id="proveedor" name="proveedor" placeholder="Ingrese el proveedor del producto">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-sm-4">
+                                <button type="submit" class="btn btn-primary">Editar Producto</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

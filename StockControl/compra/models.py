@@ -6,10 +6,10 @@ class Proveedor(models.Model):
     dni = models.IntegerField()
 
     class Meta:
-        ordering = ('nombre',)
+        ordering = ('pk',)
 
     def __str__(self) -> str:
-        return f"{self.nombre}--{self.apellido}--{self.dni}"
+        return f"{self.nombre}"
 
 class Producto(models.Model):
     nombre = models.CharField(max_length=30)
@@ -18,10 +18,10 @@ class Producto(models.Model):
     proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE )
 
     class Meta:
-        ordering = ('precio',)
+        ordering = ('pk',)
 
     def __str__(self) -> str:
-        return f"{self.nombre}--{self.precio}"
+        return f"{self.nombre}--Precio: ${self.precio}"
 
 
 
