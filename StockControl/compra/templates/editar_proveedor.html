@@ -10,7 +10,7 @@
                     Modificar los datos del Proveedor
                 </div>
                 <div class="card-body">
-                    <form action="/modificarProveedor/{{proveedor.pk}}" method="POST">
+                    <form action="/modificarProveedor/{{proveedor.pk}}/" method="POST">
                         {% csrf_token %}
                         <div class="mb-3 row">
                             <label for="nombre" class="col-sm-4 col-form-label">Nombre Proveedor</label>

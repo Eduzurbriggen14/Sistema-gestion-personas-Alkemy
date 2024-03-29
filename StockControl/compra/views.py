@@ -38,10 +38,10 @@ def modificar_proveedor(request, pk):
     
     return render(request, 'editar_proveedor.html', {'proveedor': proveedor})
 
-def mostrar_datos_proveedor(request, pk):
+""" def mostrar_datos_proveedor(request, pk):
     proveedor = get_object_or_404(Proveedor, pk=pk)
     return render(request, 'proveedores_list.html', {'proveedor': proveedor})
-
+ """
 def eliminar_proveedor(request, pk):
     proveedor = get_object_or_404(Proveedor, pk=pk)
     proveedor.delete()
@@ -82,15 +82,26 @@ def listar_productos(request):
     productos = Producto.objects.all().order_by('pk')
     return render(request, 'productos_list.html', {'productos': productos})
 
-"""def modificar_producto(request, pk):
-    producto = get_object_or_404(Producto, pk)
-    if request.metod == 'POST':
-        pass
+def modificar_producto(request, pk):
+    producto = get_object_or_404(Producto, pk=pk)
+    if request.method == 'POST':
+        producto.nombre = request.POST.get('nombre')
+        producto.precio = request.POST.get('precio')
+        producto.stock_actual = request.POST.get('stock_actual')
+        
+        proveedor_nombre = request.POST.get('proveedor')
+        proveedor = Proveedor.objects.filter(nombre=proveedor_nombre).first()
 
-def mostrar_datos_producto(request, pk):
-    producto = get_object_or_404(Producto, pk)
-    pass
- """
+        if not proveedor:
+            return render(request, 'editar_producto.html', {'producto': producto, 'error_message': 'El proveedor no existe'})
+        else:
+            producto.proveedor = proveedor
+
+        producto.save()
+        return redirect('productos_list')
+    else:
+        return render(request, 'editar_producto.html', {'producto': producto})
+
 def eliminar_producto(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
     producto.delete()
