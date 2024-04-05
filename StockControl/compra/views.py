@@ -25,8 +25,6 @@ def listar_proveedores(request):
     proveedores = Proveedor.objects.all()
     return render(request, 'proveedores_list.html', {'proveedores': proveedores})
 
-
-
 def modificar_proveedor(request, pk):
     proveedor = get_object_or_404(Proveedor, pk=pk)
     if request.method == 'POST':
@@ -38,10 +36,6 @@ def modificar_proveedor(request, pk):
     
     return render(request, 'editar_proveedor.html', {'proveedor': proveedor})
 
-""" def mostrar_datos_proveedor(request, pk):
-    proveedor = get_object_or_404(Proveedor, pk=pk)
-    return render(request, 'proveedores_list.html', {'proveedor': proveedor})
- """
 def eliminar_proveedor(request, pk):
     proveedor = get_object_or_404(Proveedor, pk=pk)
     proveedor.delete()
