@@ -3,6 +3,12 @@ StockControl es un proyecto Django que proporciona funcionalidades para gestiona
 
 Permite agregar nuevos productos y proveedores, listar todos los productos registrados en la base de datos y tener disponible en el Admin el modelo del producto y del proveedor.
 
+# Credenciales del superUser
+
+`Username: eduardo`
+
+`Password: 123456`
+
 ## Requerimientos
 - `Python 3.x`
 
